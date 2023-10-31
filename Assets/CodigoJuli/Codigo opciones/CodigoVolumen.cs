@@ -8,13 +8,13 @@ public class CodigoVolumen : MonoBehaviour
 
     public Slider slider;
     public float sliderValue;
-    public Image imagenMute;
+    //public Image imagenMute;
 
     void Start()
     {
         slider.value = PlayerPrefs.GetFloat("volumenAudio", 05f);
         AudioListener.volume = slider.value;
-        RevisarSiEstoyMute();
+        //RevisarSiEstoyMute();
     }
 
     public void ChangeSlider(float valor)
@@ -22,10 +22,12 @@ public class CodigoVolumen : MonoBehaviour
         sliderValue = valor;
         PlayerPrefs.SetFloat("volumenAudio", sliderValue);
         AudioListener.volume = slider.value;
-        RevisarSiEstoyMute();
+        //RevisarSiEstoyMute();
 
     }
-    public void RevisarSiEstoyMute()
+
+    //Falta agregar la imagen al proyecto para implementar esta función.
+    /*public void RevisarSiEstoyMute()
     {
         if (slider.value == 0)
         {
@@ -35,5 +37,5 @@ public class CodigoVolumen : MonoBehaviour
         {
             imagenMute.enabled = false;
         }
-    }
+    }*/
 }

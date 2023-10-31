@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class levelManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
-    [SerializeField]int contactos = 0;
     // Start is called before the first frame update
     void Start()
     {
-        contactos = 0;
+        
     }
 
     // Update is called once per frame
@@ -17,8 +17,8 @@ public class levelManager : MonoBehaviour
         
     }
 
-    public void aumentarContactos()
+    public void irAEscena(string escena)
     {
-        contactos++;
+        SceneManager.LoadScene(escena);
     }
 }

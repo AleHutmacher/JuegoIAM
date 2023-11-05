@@ -30,11 +30,11 @@ public class ramaController : MonoBehaviour
 
     void Update()
     {
-        if (moreRotation.getIsPressed() && currentRotation > -90)
+        if (moreRotation.getIsPressed() && currentRotation > -89)
         {
             IncreaseRotation();
         }
-        else if (lessRotation.getIsPressed() && currentRotation < 90)
+        else if (lessRotation.getIsPressed() && currentRotation < 89)
         {
             DecreaseRotation();
         }           

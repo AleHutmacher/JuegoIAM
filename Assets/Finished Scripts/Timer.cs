@@ -32,13 +32,15 @@ public class Timer : MonoBehaviour
     {
         if (actualTime > 0)
         {
+            //Si el tiempo del contador es mayor que 0, disminuye.
             actualTime -= Time.deltaTime;
         }
         else
         {
+            //Al contrario, cuando ya no es mayor que 0, el bool que indica si el contador ya finalizó pasa a ser verdadero.
             finishedCountdown = true;
         }
-
+        //Método que actualiza el tiempo del contador en formato minutos : segundos
         DisplayTime(actualTime);
     }
 

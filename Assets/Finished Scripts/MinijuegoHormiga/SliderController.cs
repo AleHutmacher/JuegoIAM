@@ -7,17 +7,15 @@ public class SliderController : MonoBehaviour
 {
     [SerializeField] RamaBehaviour Objetive;
 
-    Timer timer;
+    [SerializeField] Timer timer;
 
-    Slider thisSlider;
+    [SerializeField] Slider thisSlider;
 
-    GameManager gameManager;
+    //[SerializeField] GameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        timer = GameObject.Find("Timer").GetComponent<Timer>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        thisSlider = GetComponent<Slider>();
+
     }
 
     // Update is called once per frame
@@ -26,7 +24,7 @@ public class SliderController : MonoBehaviour
         if (timer.getFinishedCountdown())
         {
             thisSlider.interactable = false;
-            gameManager.moverHormiga();
+            //gameManager.moverHormiga();
         }
     }
     public void UpdateRamaRotation()

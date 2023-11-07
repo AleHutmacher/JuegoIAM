@@ -24,4 +24,13 @@ public class RamaBehaviour : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, value, transform.position.z);
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("Piedra"))
+        {
+            collision.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+        }
+    }
 }

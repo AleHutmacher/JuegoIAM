@@ -56,6 +56,13 @@ public class HormigaBehaviour : MonoBehaviour
         //Debug.Log($"Rotacion: {RamaTransform.rotation.z}");
         //Debug.Log($"Posicion y: {RamaTransform.position.y}");
         bool retorno = (RamaTransform.rotation.z >= 0.20f && RamaTransform.rotation.z <= 0.25f) && (RamaTransform.position.y >= 1f && RamaTransform.position.y <= 1.2f);
+        /*
+         * 
+         *          y2-y1
+         * m =   ----------
+         *          x2-x1
+         * 
+         */
         if (retorno)
         {
             //Debug.Log("Puede subir la pendiente");

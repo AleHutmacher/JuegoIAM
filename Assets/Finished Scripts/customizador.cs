@@ -11,6 +11,8 @@ public class customizador : MonoBehaviour
 
     public int currentOption = 0;
 
+    public string prefName;
+
     public virtual void nextOption()
     {
         currentOption++;
@@ -34,5 +36,12 @@ public class customizador : MonoBehaviour
     public virtual void changeOption()
     {
         bodyPart.sprite = options[currentOption];
+        PlayerPrefs.SetInt(prefName, currentOption);
+    }
+
+    public void loadOptionSaved(int option)
+    {
+        currentOption = option;
+        changeOption();
     }
 }

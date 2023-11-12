@@ -27,10 +27,12 @@ public class RamaBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.gameObject.CompareTag("Piedra"))
+        if (collision.gameObject.CompareTag("Piedra") && collision.GetComponent<PiedraBehaviour>().CanDestroy())
         {
             collision.gameObject.SetActive(false);
             gameObject.SetActive(false);
         }
     }
 }
+
+

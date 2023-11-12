@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PiedraBehaviour : MonoBehaviour
 {
-    [SerializeField] GameObject box;
     [SerializeField] Timer timer;
+
+    bool canDestroy = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -17,7 +19,13 @@ public class PiedraBehaviour : MonoBehaviour
     {
         if (timer.getFinishedCountdown())
         {
-            box.SetActive(false);
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            canDestroy = true;
         }
+    }
+
+    public bool CanDestroy()
+    {
+        return canDestroy;
     }
 }

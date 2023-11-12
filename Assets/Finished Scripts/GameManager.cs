@@ -7,10 +7,14 @@ public class GameManager : MonoBehaviour
 {
     bool nivelFinalizado = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private PlayerManager playerManager;
+
+    private void Start()
     {
-        
+        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
+        playerManager.getAllCustomizers();
+        playerManager.getAllPlayerPrefs();
+        playerManager.initializeCustomizers();
     }
 
     // Update is called once per frame

@@ -19,7 +19,7 @@ public class WaipointBehaviour : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.gameObject.GetComponent<HormigaBehaviour>().CollisionDetected(gameObject.name == "BorderSup" ? "Sup" : gameObject.name == "BorderInf" ? "Inf" : "Destiny");
+            collision.gameObject.GetComponent<PlayerBehaviour>().CollisionDetected(gameObject.name == "BorderSup" ? "Sup" : gameObject.name == "BorderInf" ? "Inf" : "Destiny");
             gameObject.SetActive(false);
         }
     }

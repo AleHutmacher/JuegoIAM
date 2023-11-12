@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Rama
   - Piedra
+  - PlayerManager
+  - Customizer
   layers:
   - Default
   - TransparentFX

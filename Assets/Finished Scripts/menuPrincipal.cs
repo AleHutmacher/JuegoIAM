@@ -15,6 +15,7 @@ public class menuPrincipal : MonoBehaviour
 
     //EventSystem para poder desactivarlo e impedir interacciones en medio de una animación.
     public GameObject eventSystem;
+
     public void cerrarJuego()
     {
         Application.Quit();

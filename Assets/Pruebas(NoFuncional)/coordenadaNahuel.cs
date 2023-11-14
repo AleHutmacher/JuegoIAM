@@ -12,7 +12,7 @@ public class coordenadasDeRama : MonoBehaviour
 
     void Start()
     {
-        TMP.text = "X = 0  Y = 0";
+        TMP.text = "(0, 0)";
     }
 
 
@@ -20,8 +20,8 @@ public class coordenadasDeRama : MonoBehaviour
     {
 
         Vector3 coordenadas = target.position;
-        TMP.text = "X = " + System.Math.Round(coordenadas.x, 3) + 
-                  "\n" + "Y = " + System.Math.Round(coordenadas.y, 3);
+        TMP.text = "(" + System.Math.Round(coordenadas.x, 2) + 
+                  ", " + System.Math.Round(coordenadas.y, 2) + ")";
 
     }
 

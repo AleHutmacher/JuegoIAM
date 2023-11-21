@@ -8,6 +8,7 @@ TagManager:
   - Piedra
   - PlayerManager
   - Customizer
+  - Waypoint
   layers:
   - Default
   - TransparentFX

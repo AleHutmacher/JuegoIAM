@@ -36,5 +36,6 @@ public class GameManager : MonoBehaviour
     public void irAEscena(string escena)
     {
         SceneManager.LoadScene(escena);
+        Time.timeScale = 1;
     }
 }

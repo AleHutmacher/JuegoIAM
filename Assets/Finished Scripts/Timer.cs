@@ -12,6 +12,7 @@ public class Timer : MonoBehaviour
     [SerializeField]private float actualTime;
 
     [SerializeField] private bool finishedCountdown;
+    [SerializeField] GameObject panelDefeat;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +23,14 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (finishedCountdown != true)
+        if (!finishedCountdown)
         {
             updateTimer();
+        }
+        else
+        {
+            panelDefeat.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 

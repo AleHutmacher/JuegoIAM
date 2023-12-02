@@ -5414,7 +5414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fb0beef280d52847a6d66f0bb43f16c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 90
+  maxTime: 10
   textTime: {fileID: 1879713781}
   actualTime: 0
   finishedCountdown: 0

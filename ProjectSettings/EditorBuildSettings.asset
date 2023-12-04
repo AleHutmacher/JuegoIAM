@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/menu.unity
     guid: 5c61ee2e4b42014409dd6c666776e21f
   - enabled: 1
+    path: Assets/Scenes/Historia.unity
+    guid: e8d468a50201bed44bcde3c583a38fa0
+  - enabled: 1
     path: Assets/Scenes/NivelHormiga.unity
     guid: 757332f4b9ab92646b7f0bdbce124b0f
   m_configObjects: {}

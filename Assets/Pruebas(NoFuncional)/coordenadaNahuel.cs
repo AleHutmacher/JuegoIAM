@@ -21,7 +21,7 @@ public class coordenadasDeRama : MonoBehaviour
 
         Vector3 coordenadas = target.position;
         TMP.text = "(" + System.Math.Round(coordenadas.x, 2) + 
-                  ", " + System.Math.Round(coordenadas.y, 2) + ")";
+                  "; " + System.Math.Round(coordenadas.y, 2) + ")";
 
     }
 

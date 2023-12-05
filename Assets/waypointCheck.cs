@@ -4,23 +4,31 @@ using UnityEngine;
 
 public class waypointCheck : MonoBehaviour
 {
-    bool checkedPosition;
+    [SerializeField]bool checkedPosition;
 
     private void Start()
     {
-        checkedPosition = false;
     }
 
-    bool GetCheckedPosition()
+    public bool GetCheckedPosition()
     {
         return checkedPosition;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Waypoint"))
+        if (collision.gameObject.CompareTag("Waypoint"))
         {
+            Debug.Log("colision wayp");
             checkedPosition = true;
         }
     }
+
+    /*private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Waypoint"))
+        {
+            checkedPosition = false;
+        }
+    }*/
 }

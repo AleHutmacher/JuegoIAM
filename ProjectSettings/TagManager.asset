@@ -9,6 +9,7 @@ TagManager:
   - PlayerManager
   - Customizer
   - Waypoint
+  - JumpPoint
   layers:
   - Default
   - TransparentFX

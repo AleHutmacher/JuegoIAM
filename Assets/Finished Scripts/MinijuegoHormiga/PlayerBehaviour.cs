@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
-    [SerializeField] Transform BordeAcantiladoInf;
+    /*[SerializeField] Transform BordeAcantiladoInf;
     [SerializeField] bool llegoAlBordeInf = false;
     [SerializeField] Transform BordeAcantiladoSup;
     [SerializeField] bool llegoAlBordeSup = false;
@@ -13,107 +13,77 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField] bool CanMove = false;
     [SerializeField] Transform RamaTransform;
     private bool saltoInf = false;
-    private bool saltoSup = false;
+    private bool saltoSup = false;*/
 
     private Rigidbody2D rb2d;
 
+    public Transform destiny;
+
+    [SerializeField] float minDistance;
+    [SerializeField] float speed;
+    [SerializeField] float jumpForce;
+    [SerializeField] float gravityForce;
+
+    bool destinyReached;
+    bool canMove;
+
     private void Start()
     {
+        destinyReached = false;
+
+        canMove = false;
+
         rb2d = GetComponent<Rigidbody2D>();
+
+        rb2d.gravityScale = gravityForce;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (CanMove)
+        if (canMove)
         {
-            MoveToBorderInf();
-            MoveToBorderSup();
-            MoveToDestiny();
-        }
-        if (llegoAlBordeSup)
-        {
-            saltoInf = true;
+            Move();
         }
     }
 
-    private void MoveToBorderSup()
+    public void StartMovement()
     {
-        if (llegoAlBordeInf && !llegoAlBordeSup && PuedeSubirLaPendiente())
+        canMove = true;
+    }
+
+    void Move()
+    {
+        if (Vector2.Distance(transform.position, destiny.position) > minDistance)
         {
-            if (!saltoInf) SaltarHaciaAdelante();
-            transform.position = Vector3.MoveTowards(transform.position, BordeAcantiladoSup.position, 1.5f * Time.deltaTime);
+            rb2d.velocity = new Vector2(speed, rb2d.velocity.y);
+        }
+        else
+        {
+            triggerEnd();
         }
     }
 
-    private void SaltarHaciaAdelante()
+    void Jump()
     {
-        // salta hacia adelante con elevacion de 1 y distancia de 1
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x + 1, transform.position.y + 1, transform.position.z), 1.5f * Time.deltaTime);
+        rb2d.velocity = new Vector2(rb2d.velocity.x, jumpForce);
+        Debug.Log("salto realizado");
     }
 
-    private bool PuedeSubirLaPendiente()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Debug.Log($"Rotacion: {RamaTransform.rotation.z}");
-        //Debug.Log($"Posicion y: {RamaTransform.position.y}");
-        bool retorno = (RamaTransform.rotation.z >= 0.20f && RamaTransform.rotation.z <= 0.25f) && (RamaTransform.position.y >= 1f && RamaTransform.position.y <= 1.2f);
-        /*
-         * 
-         *          y2-y1
-         * m =   ----------
-         *          x2-x1
-         * 
-         */
-        if (retorno)
+        if (collision.gameObject.CompareTag("JumpPoint"))
         {
-            //Debug.Log("Puede subir la pendiente");
-            RamaTransform.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
-
-        }
-        return retorno;
-    }
-
-    private void MoveToBorderInf()
-    {
-        if (!llegoAlBordeInf)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, BordeAcantiladoInf.position, 2f * Time.deltaTime);
+            Jump();
         }
     }
 
-    public void GoToDestiny()
+    void triggerEnd()
     {
-        CanMove = true;
-    }
-    private void MoveToDestiny()
-    {
-        if (llegoAlBordeInf && llegoAlBordeSup)
+        if (!destinyReached)
         {
-            if (!saltoSup) SaltarHaciaAdelante();
-            transform.position = Vector3.MoveTowards(transform.position, Destiny.position, 1 * Time.deltaTime);
-        }
-    }
 
-    public void CollisionDetected(string value)
-    {
-        if (value.ToLower() == "inf")
-        {
-            llegoAlBordeInf = true;
+            destinyReached = true;
         }
-        else if (value.ToLower() == "sup")
-        {
-            llegoAlBordeSup = true;
-        }
-        else if (value.ToLower() == "destiny")
-        {
-            saltoSup = true;
-        }
-    }
-
-    public void levelState()
-    {
-        transform.localScale = new Vector3(0.25f, 0.25f, 1);
-        transform.position = new Vector3(-3, 1, 0);
-        rb2d.bodyType = RigidbodyType2D.Dynamic;
     }
 }

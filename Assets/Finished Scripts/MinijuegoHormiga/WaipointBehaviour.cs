@@ -15,12 +15,12 @@ public class WaipointBehaviour : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             collision.gameObject.GetComponent<PlayerBehaviour>().CollisionDetected(gameObject.name == "BorderSup" ? "Sup" : gameObject.name == "BorderInf" ? "Inf" : "Destiny");
             gameObject.SetActive(false);
         }
-    }
+    }*/
 }

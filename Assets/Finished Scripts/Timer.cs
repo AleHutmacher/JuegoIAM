@@ -13,9 +13,12 @@ public class Timer : MonoBehaviour
 
     [SerializeField] private bool finishedCountdown;
     [SerializeField] GameObject panelDefeat;
+
+    bool pausedCountdown;
     // Start is called before the first frame update
     void Start()
     {
+        pausedCountdown = false;
         Time.timeScale = 1;
         actualTime = maxTime;
         finishedCountdown = false;
@@ -39,8 +42,7 @@ public class Timer : MonoBehaviour
     {
         if (actualTime > 0)
         {
-            //Si el tiempo del contador es mayor que 0, disminuye.
-            actualTime -= Time.deltaTime;
+            RunTime();
         }
         else
         {
@@ -49,6 +51,15 @@ public class Timer : MonoBehaviour
         }
         //Método que actualiza el tiempo del contador en formato minutos : segundos
         DisplayTime(actualTime);
+    }
+
+    void RunTime()
+    {
+        if (!pausedCountdown)
+        {
+            //Si el tiempo del contador es mayor que 0, disminuye.
+            actualTime -= Time.deltaTime;
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -67,5 +78,10 @@ public class Timer : MonoBehaviour
     public bool getFinishedCountdown()
     {
         return finishedCountdown;
+    }
+
+    public void StopCountdown()
+    {
+        pausedCountdown = true;
     }
 }
